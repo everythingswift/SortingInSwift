@@ -13,6 +13,7 @@
 		5201AED81F5DFB5300F43ED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5201AED71F5DFB5300F43ED0 /* Assets.xcassets */; };
 		5201AEDB1F5DFB5300F43ED0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5201AED91F5DFB5300F43ED0 /* LaunchScreen.storyboard */; };
 		5201AEE31F5DFCBB00F43ED0 /* SortingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5201AEE21F5DFCBB00F43ED0 /* SortingDetailViewController.swift */; };
+		5202780F1F5F63C300E37F09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202780E1F5F63C300E37F09 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5201AEDA1F5DFB5300F43ED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5201AEDC1F5DFB5300F43ED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5201AEE21F5DFCBB00F43ED0 /* SortingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingDetailViewController.swift; sourceTree = "<group>"; };
+		5202780E1F5F63C300E37F09 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				5201AED01F5DFB5300F43ED0 /* AppDelegate.swift */,
 				5201AED21F5DFB5300F43ED0 /* SortingTypesViewController.swift */,
 				5201AEE21F5DFCBB00F43ED0 /* SortingDetailViewController.swift */,
+				5202780E1F5F63C300E37F09 /* Constants.swift */,
 				5201AED41F5DFB5300F43ED0 /* Main.storyboard */,
 				5201AED71F5DFB5300F43ED0 /* Assets.xcassets */,
 				5201AED91F5DFB5300F43ED0 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				5201AED31F5DFB5300F43ED0 /* SortingTypesViewController.swift in Sources */,
 				5201AED11F5DFB5300F43ED0 /* AppDelegate.swift in Sources */,
 				5201AEE31F5DFCBB00F43ED0 /* SortingDetailViewController.swift in Sources */,
+				5202780F1F5F63C300E37F09 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				5201AEE11F5DFB5300F43ED0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

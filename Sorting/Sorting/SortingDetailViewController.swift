@@ -14,8 +14,8 @@ class SortingDetailViewController: UIViewController {
     @IBOutlet weak var unsortedContentsLabel:UILabel!
     
     var titleString:String!
-    let sortingTypes = ["Selection Sort", "Insertion Sort", "Bubble Sort", "Merge Sort", "Quick Sort"]
-    let unsortedArray = [10, 22, 50, 9, 33, 41, 21, 40, 80, 60, 26]
+    let sortingTypes = [SELECTION_SORT, INSERTION_SORT, BUBBLE_SORT, MERGE_SORT, QUICK_SORT, HEAP_SORT]
+    var unsortedArray = [10, 22, 50, 9, 33, 41, 21, 40, 80, 60, 26]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +24,18 @@ class SortingDetailViewController: UIViewController {
         self.unsortedContentsLabel.text = "[10, 22, 50, 9, 33, 41, 21, 40, 80, 60, 26]"
         
         switch titleString {
-            case "Selection Sort":
+            case SELECTION_SORT:
                 self.showSelectionSort()
-            case "Insertion Sort":
+            case INSERTION_SORT:
                 self.showInsertionSort()
-            case "Bubble Sort":
+            case BUBBLE_SORT:
                 self.showBubbleSort()
-            case "Merge Sort":
+            case MERGE_SORT:
                 self.showMergeSort()
-            case "Quick Sort":
+            case QUICK_SORT:
                 self.showQuickSort()
+            case HEAP_SORT:
+                self.showHeapSort()
             default:
                 print("All others")
         }
@@ -47,9 +49,9 @@ class SortingDetailViewController: UIViewController {
     //MARK: - Selection Sort
     func showSelectionSort(){
         var result = unsortedArray
-        for var i in 0..<result.count{
+        for i in 0..<result.count{
             var min_index = i
-            for var j in i+1..<result.count{
+            for j in i+1..<result.count{
                 if result[j] < result[min_index]{
                     min_index = j
                 }
@@ -70,7 +72,7 @@ class SortingDetailViewController: UIViewController {
     func showInsertionSort(){
         
         var result = unsortedArray
-        for var i in 0..<unsortedArray.count{
+        for i in 0..<unsortedArray.count{
             
             let key = result[i]
             var j = i-1
@@ -92,7 +94,7 @@ class SortingDetailViewController: UIViewController {
         var result = unsortedArray
         var didSwap = false
         
-        for var i in 0..<unsortedArray.count-1{
+        for i in 0..<unsortedArray.count-1{
             for j in 0..<unsortedArray.count-i-1{
                 
                 if(result[j] > result[j+1]){
@@ -194,7 +196,7 @@ class SortingDetailViewController: UIViewController {
         var leftArray:[Int] = []
         var rightArray:[Int] = []
         
-        for var i in 0..<pivotIndex{
+        for i in 0..<pivotIndex{
             if arrayToSort[i] < arrayToSort[pivotIndex]{
                 leftArray.append(arrayToSort[i])
             }else if arrayToSort[i] > arrayToSort[pivotIndex]{
@@ -236,16 +238,76 @@ class SortingDetailViewController: UIViewController {
     func concatenateArrays(leftSortedArray: [Int],  rightSortedArray: [Int], pivotElement : Int) -> [Int]{
         
         var resultArray:[Int] = []
-        for var n in leftSortedArray{
+        for n in leftSortedArray{
             resultArray.append(n)
         }
         
         resultArray.append(pivotElement)
-        for var k in rightSortedArray{
+        for k in rightSortedArray{
             resultArray.append(k)
         }
         return resultArray
     }
     
+    //MARK: - HEAP SORT
+    
+    func showHeapSort(){
+        
+        updateResultsTextView("Unsorted Array: " + String(describing: unsortedArray))
+        updateResultsTextView("\n")
+        
+        var i = Int(unsortedArray.count - 1) / 2
+        while i >= 0{
+            heapify(&unsortedArray, n: unsortedArray.count, i: i)
+            updateResultsTextView("Create Heap: \(i)" + String(describing: unsortedArray) + "\n")
+            i -= 1
+        }
+        updateResultsTextView("\n")
+        
+        i = unsortedArray.count - 1
+        var sortedArray:[Int] = []
+        
+        while i >= 0{
+            sortedArray.insert(unsortedArray[0], at: 0)
+            let temp = unsortedArray[unsortedArray.count - 1]
+            unsortedArray[0] = temp
+            unsortedArray.removeLast()
+            heapify(&unsortedArray, n: unsortedArray.count, i: 0)
+            updateResultsTextView("Sorting -> Heap: \(unsortedArray.count)" + String(describing: unsortedArray))
+            i -= 1
+        }
+        updateResultsTextView("\n")
 
+        updateResultsTextView("Sorted Array: " + String(describing: sortedArray))
+    }
+
+    func heapify(_ arrayToSort: inout [Int], n: Int, i: Int){
+        
+        var largest = i
+        let left = 2*i + 1
+        let right = 2 * i + 2
+        
+        if left < n && arrayToSort[largest] < arrayToSort[left]{
+            largest = left
+        }
+        
+        if right < n && arrayToSort[largest] < arrayToSort[right]{
+            largest = right
+        }
+        
+        if largest != i{
+            let temp = arrayToSort[i]
+            arrayToSort[i] = arrayToSort[largest]
+            arrayToSort[largest] = temp
+            
+            heapify(&arrayToSort, n: n, i: largest)
+        }
+    }
+    
+    // UPDATE RESULTS TEXT VIEW
+    
+    func updateResultsTextView(_ contentString : String){
+        let currentText = stepsTextView.text
+        stepsTextView.text = currentText! + contentString + "\n"
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class SortingTypesViewController: UITableViewController {
 
-    let sortingTypes = ["Selection Sort", "Insertion Sort", "Bubble Sort", "Merge Sort", "Quick Sort"]
+    let sortingTypes = [SELECTION_SORT, INSERTION_SORT, BUBBLE_SORT, MERGE_SORT, QUICK_SORT, HEAP_SORT]
     var currentSortingType:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
